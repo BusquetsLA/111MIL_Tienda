@@ -33,8 +33,8 @@ public class VistaAdministrar implements ContratoVistaAdministrar {
     public void mostrarCategorias(){
         Scanner teclado = new Scanner(System.in);
         clearConsole();
-        System.out.println("\t"+"¡Bienvenidos!"+"\n"+
-                "Ingrese una de las siguientes opciones: "+"\n"+
+        System.out.println("");
+        System.out.println("Ingrese una de las siguientes opciones: "+"\n"+
                 "1) Variedades."+"\n"+
                 "2) Coccion."+"\n"+
                 "3) Tamaño."+"\n"+
@@ -49,7 +49,7 @@ public class VistaAdministrar implements ContratoVistaAdministrar {
     public void mostrarVariedades(List<VariedadPizza> variedades){
         for(int i=0; i<variedades.size();i++){
            
-            System.out.print("Variedad " + i+1 + ": ");
+            System.out.print("Variedad " + (i+1) + ": ");
             System.out.println(variedades.get(i).getNombre());
         }
     }
@@ -58,7 +58,7 @@ public class VistaAdministrar implements ContratoVistaAdministrar {
     public void mostrarCoccion(List<TipoPizza> tipoCoccion){
         for(int i=0; i<tipoCoccion.size();i++){
            
-            System.out.print("Tipo de cocción " + i+1 + ": ");
+            System.out.print("Tipo de cocción " + (i+1) + ": ");
             System.out.println(tipoCoccion.get(i).getNombre());
         }
     }
@@ -67,7 +67,7 @@ public class VistaAdministrar implements ContratoVistaAdministrar {
     public void mostrarTamanios(List<TamanioPizza> tamanios){
         for(int i=0; i<tamanios.size();i++){
            
-            System.out.print("Tamaños " + i+1 + ": ");
+            System.out.print("Tamaños " + (i+1) + ": ");
             System.out.println(tamanios.get(i).getNombre());
         }
     }
@@ -80,6 +80,12 @@ public class VistaAdministrar implements ContratoVistaAdministrar {
             System.out.println(pizzas.get(i).getPrecio());
         }
     }
+    
+    @Override
+    public void mostrarOPcionErronea(){
+        this.clearConsole();
+        System.out.println("La opcion ingresada no es correcta.");
+        }
     
         private void clearConsole() {
         System.out.print("\033[H\033[2J");
