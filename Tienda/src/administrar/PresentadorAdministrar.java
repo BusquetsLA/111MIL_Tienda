@@ -80,4 +80,9 @@ public class PresentadorAdministrar implements ContratoPresentadorAdministrar {
         VariedadPizza nvaVP = new VariedadPizza(nvosIngredientes, nvoNombre);
         this.proveedor.guardarNuevaVariedad(nvaVP);
     }
+    
+    /* public void crearNuevaCoccion() {
+        VariedadPizza nvaVP = new VariedadPizza();
+        this.proveedor.guardarNuevaVariedad(nvaVP);
+    }*/
 }
