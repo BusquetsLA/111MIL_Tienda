@@ -21,8 +21,10 @@ public class VistaAdministrar implements ContratoVistaAdministrar {
     
     private final ContratoPresentadorAdministrar presentador;
     private final ControladorVistas controlador;
+    private Scanner teclado ;
     
     public VistaAdministrar(ControladorVistas controlador){
+        this.teclado = new Scanner(System.in);
         this.controlador = controlador;
         this.presentador = new PresentadorAdministrar(this);
         this.presentador.iniciar();
@@ -31,7 +33,7 @@ public class VistaAdministrar implements ContratoVistaAdministrar {
     
     @Override
     public void mostrarCategorias(){
-        Scanner teclado = new Scanner(System.in);
+       
         clearConsole();
         System.out.println("");
         System.out.println("Ingrese una de las siguientes opciones: "+"\n"+
@@ -52,6 +54,15 @@ public class VistaAdministrar implements ContratoVistaAdministrar {
             System.out.print("Variedad " + (i+1) + ": ");
             System.out.println(variedades.get(i).getNombre());
         }
+    }
+    public void mostrarMenuOpcionesxCategoria(){
+        
+        System.out.println("1) Modificar Item");
+        System.out.println("2) Volver Menu Principal");
+        int seleccion = this.teclado.nextInt();
+    }
+    public void mostrarEditarNuevaVariedad(){
+        
     }
     
     @Override
@@ -107,5 +118,14 @@ public class VistaAdministrar implements ContratoVistaAdministrar {
         public void irMenuPrincipal() {
             this.controlador.lanzarMenuPrincipal();
         }
+
+    @Override
+    public void mostrarEditorVariedades() {
+        System.out.println("Ingrese nombre para la nueva variedad");
+        String nvoNombre = this.teclado.next();
+        System.out.println("Ingrese los ingredientes");
+        String nvosIngredientes = this.teclado.next();
+        this.presentador.crearNuevaVariedad(nvoNombre, nvosIngredientes);
+    }
     
 }

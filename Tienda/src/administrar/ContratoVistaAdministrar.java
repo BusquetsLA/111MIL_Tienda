@@ -24,5 +24,7 @@ public interface ContratoVistaAdministrar {
     public void mostrarVariedades(List<VariedadPizza> variedades);
     public void mostrarPrecios(List<Pizza> precios);
     public void mostrarOPcionErronea();
+
+    public void mostrarEditorVariedades();
     
 }

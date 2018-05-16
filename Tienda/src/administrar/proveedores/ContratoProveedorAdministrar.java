@@ -16,5 +16,7 @@ public interface ContratoProveedorAdministrar {
     List<TipoPizza> obtenerTipos();
     List<TamanioPizza> obtenerTamanios();
     List<Pizza> obtenerPizzas();
+
+    public void guardarNuevaVariedad(VariedadPizza nvaVP);
     
 }

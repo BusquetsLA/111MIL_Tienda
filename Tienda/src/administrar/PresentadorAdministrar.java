@@ -9,6 +9,7 @@ import administrar.proveedores.ContratoProveedorAdministrar;
 import administrar.proveedores.FalsoProveedorAdministrador;
 import java.util.List;
 import modelos.TipoPizza;
+import modelos.VariedadPizza;
 
 /**
  *
@@ -18,6 +19,7 @@ public class PresentadorAdministrar implements ContratoPresentadorAdministrar {
     
     private final ContratoVistaAdministrar vista;
     private ContratoProveedorAdministrar proveedor;
+    private int categoriaActual = 0;
     public PresentadorAdministrar(ContratoVistaAdministrar vista) {
         this.vista = vista;
         this.proveedor= new FalsoProveedorAdministrador();
@@ -26,6 +28,7 @@ public class PresentadorAdministrar implements ContratoPresentadorAdministrar {
     public void procesarCategorias(int codigoCategoria){
         switch(codigoCategoria){
             case 1:
+                this.categoriaActual = 1;
                 this.vista.mostrarVariedades(this.proveedor.obtenerVariedades());
                 this.vista.mostrarCategorias();
                 break;
@@ -44,6 +47,7 @@ public class PresentadorAdministrar implements ContratoPresentadorAdministrar {
             case 5:
                 this.vista.irMenuPrincipal();
                 break;
+            case 6:
             default:
                 this.vista.mostrarOPcionErronea();
                 this.vista.mostrarCategorias();
@@ -53,7 +57,27 @@ public class PresentadorAdministrar implements ContratoPresentadorAdministrar {
         
     }
     
+    public void procesarMenuCategoria(int opcion){
+        switch(opcion){
+            case 1:
+                this.vista.mostrarEditorVariedades();
+                break;
+            case 2:
+                this.vista.irMenuPrincipal();
+                break;
+            default:
+                this.vista.mostrarOPcionErronea();
+                break;
+        }
+    }
+    
     public void iniciar(){
         this.vista.mostrarCategorias();
+    }
+
+    @Override
+    public void crearNuevaVariedad(String nvoNombre, String nvosIngredientes) {
+        VariedadPizza nvaVP = new VariedadPizza(nvosIngredientes, nvoNombre);
+        this.proveedor.guardarNuevaVariedad(nvaVP);
     }
 }

@@ -62,5 +62,10 @@ public class FalsoProveedorAdministrador implements ContratoProveedorAdministrar
         return this.pizzas;
         
     }
+
+    @Override
+    public void guardarNuevaVariedad(VariedadPizza nvaVP) {
+        this.variedades.add(nvaVP);
+    }
     
 }

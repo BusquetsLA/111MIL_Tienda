@@ -13,5 +13,7 @@ public interface ContratoPresentadorAdministrar {
     
     public void procesarCategorias(int codigoCategorias);
     public void iniciar();
+
+    public void crearNuevaVariedad(String nvoNombre, String nvosIngredientes);
     
 }
