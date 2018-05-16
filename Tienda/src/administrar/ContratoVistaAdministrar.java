@@ -23,5 +23,6 @@ public interface ContratoVistaAdministrar {
     public void mostrarTamanios(List<TamanioPizza> tamanios);
     public void mostrarVariedades(List<VariedadPizza> variedades);
     public void mostrarPrecios(List<Pizza> precios);
+    public void mostrarOPcionErronea();
     
 }

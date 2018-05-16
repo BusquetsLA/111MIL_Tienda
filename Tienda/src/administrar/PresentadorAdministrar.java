@@ -45,6 +45,8 @@ public class PresentadorAdministrar implements ContratoPresentadorAdministrar {
                 this.vista.irMenuPrincipal();
                 break;
             default:
+                this.vista.mostrarOPcionErronea();
+                this.vista.mostrarCategorias();
                 break;
             
         }
