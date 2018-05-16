@@ -5,6 +5,7 @@
  */
 package estadisticas.proveedores;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -25,10 +26,11 @@ import modelos.VariedadPizza;
 public class PedidosFalsos implements PedidosParaEstadisticas{
     
     private EstadoPedido estadoParatodos = new EstadoPedido();
+    private Factura facturaParaTodos = new Factura();
+    
     private Pizza miPizza = new Pizza("mazaG", 189.22f, new TamanioPizza(12, "grande"), new TipoPizza("dsfasdfsd", "Horno"), new VariedadPizza("sdfsdfgfdsf", "Muzzarella"));
     private Pizza miPizza2 = new Pizza("Especial", 170.5f, new TamanioPizza(8 , "mediana"), new TipoPizza("askd", "Piedra"), new VariedadPizza("kajsdjkas", "Anana"));
-    Factura facturaParaTodos = new Factura();
-    
+        
     private List<VariedadPizza> variedades = Arrays.asList(
               new VariedadPizza("askjdkj", "Muzzarella"),
               new VariedadPizza("asdsaasd", "Anana"),
@@ -57,9 +59,20 @@ public class PedidosFalsos implements PedidosParaEstadisticas{
     Date date6 = new Date(2017, 10, 30);
     
      private List<Pedido> pedidos = Arrays.asList(
-            new Pedido("Toby", 4, date1, date1, facturaParaTodos, estadoParatodos));
+            new Pedido("Toby", 4, date1, date2, facturaParaTodos, estadoParatodos));
+    
+     
+    public PedidosFalsos() {
+        ArrayList<DetallePedido> detalles = new ArrayList<>();
+        detalles.add(new DetallePedido(5, miPizza));
+        detalles.add(new DetallePedido(2, miPizza2));
+        
+        for(Pedido pedido: pedidos){
+            pedido.agregarDetalleDePedido(detalles);
+        }
+    }
 
-
+     
      @Override
     public List<Pedido> obtenerPedidos() {
         return this.pedidos;
