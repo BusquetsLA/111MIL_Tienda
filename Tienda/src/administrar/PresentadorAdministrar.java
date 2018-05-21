@@ -8,6 +8,7 @@ package administrar;
 import administrar.proveedores.ContratoProveedorAdministrar;
 import administrar.proveedores.FalsoProveedorAdministrador;
 import java.util.List;
+import modelos.TamanioPizza;
 import modelos.TipoPizza;
 import modelos.VariedadPizza;
 
@@ -57,6 +58,7 @@ public class PresentadorAdministrar implements ContratoPresentadorAdministrar {
         
     }
     
+    @Override
     public void procesarMenuCategoria(int opcion){
         switch(opcion){
             case 1:
@@ -71,18 +73,26 @@ public class PresentadorAdministrar implements ContratoPresentadorAdministrar {
         }
     }
     
+    @Override
     public void iniciar(){
         this.vista.mostrarCategorias();
     }
 
     @Override
     public void crearNuevaVariedad(String nvoNombre, String nvosIngredientes) {
-        VariedadPizza nvaVP = new VariedadPizza(nvosIngredientes, nvoNombre);
-        this.proveedor.guardarNuevaVariedad(nvaVP);
+        VariedadPizza nvaVariedad = new VariedadPizza(nvosIngredientes, nvoNombre);
+        this.proveedor.guardarNuevaVariedad(nvaVariedad);
     }
     
-    /* public void crearNuevaCoccion() {
-        VariedadPizza nvaVP = new VariedadPizza();
-        this.proveedor.guardarNuevaVariedad(nvaVP);
-    }*/
+    @Override
+    public void crearNuevoTipo(String nvoNombre, String nvaDescripcion) {
+        TipoPizza nvoTipo = new TipoPizza(nvoNombre, nvaDescripcion);
+        this.proveedor.guardarNuevoTipo(nvoTipo);
+    }
+    
+    @Override
+    public void crearNuevoTamanio(int nvaCantPorciones, String nvoNombre) {
+        TamanioPizza nvoTamanio = new TamanioPizza(nvoNombre, nvaCantPorciones);
+        this.proveedor.guardarNuevoTamanio(nvoTamanio);
+    }
 }

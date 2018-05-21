@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -64,8 +64,18 @@ public class FalsoProveedorAdministrador implements ContratoProveedorAdministrar
     }
 
     @Override
-    public void guardarNuevaVariedad(VariedadPizza nvaVP) {
-        this.variedades.add(nvaVP);
+    public void guardarNuevaVariedad(VariedadPizza nvaVariedad) {
+        this.variedades.add(nvaVariedad);
+    }
+
+    @Override
+    public void guardarNuevoTipo(TipoPizza nvoTipo) {
+        this.tipos.add(nvoTipo);
+    }
+
+    @Override
+    public void guardarNuevoTamanio(TamanioPizza nvoTamanio) {
+        this.tamanios.add(nvoTamanio);
     }
     
 }
